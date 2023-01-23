@@ -1,6 +1,5 @@
 db = db.getSiblingDB('animalquiz');
-
-db.createCollection('animals');
+db.createCollection("animals");
 
 db.sample_collection.insertMany([
     {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import mongoose from 'mongoose';
-import Animals from './Animals'
+import Animals from './Animals.js'
 
 function App() {
 
