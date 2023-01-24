@@ -1,5 +1,0 @@
-npm install
-docker compose -f "docker-compose.yml" up -d --build 
-//db login
-username: root
-password: root
