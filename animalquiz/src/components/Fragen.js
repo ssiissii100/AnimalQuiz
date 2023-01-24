@@ -1,46 +1,81 @@
 import animals from "./../animals.json";
 import { useState } from "react";
 
-function Fragen() {
-  const [selectedCategory, setSelectedCategory] = useState("Speed");
-  const [selectedAnimals, setSelectedAnimals] = useState([]);
+function Fragen({ kategorie }) {
+  const [disable, setDisable] = useState(false);
+  //   const [selectedCategory, setSelectedCategory] = useState("Speed");
+  //   const [selectedAnimals, setSelectedAnimals] = useState([]);
 
-  const handleSelect = (e, animal) => {
-    if (e.target.checked) {
-      setSelectedAnimals([...selectedAnimals, animal]);
-    } else {
-      setSelectedAnimals(selectedAnimals.filter((a) => a !== animal));
+  //   const handleSelect = (e, animal) => {
+  //     if (e.target.checked) {
+  //       setSelectedAnimals([...selectedAnimals, animal]);
+  //     } else {
+  //       setSelectedAnimals(selectedAnimals.filter((a) => a !== animal));
+  //     }
+  //   };
+
+  //   const handleCategoryChange = (e) => {
+  //     setSelectedCategory(e.target.value);
+  //   };
+  const numbers = Array.from({ length: 20 }, (_, i) => i);
+  const shuffledNumbers = numbers.sort(() => Math.random() - 0.5);
+  const uniqueNumbers = shuffledNumbers.slice(0, 5);
+  console.log(uniqueNumbers);
+  console.log(animals[0].kategorie);
+  console.log(kategorie);
+
+  const Answer = (e) => {
+    setDisable(true);
+    console.log(e.currentTarget.id);
+    if (animals[0].kategorie > animals[uniqueNumbers[0]].name) {
     }
   };
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
-
   return (
-    <div>
-      <h1>Animals by</h1>
-      <select onChange={handleCategoryChange} value={selectedCategory}>
-        <option value="Speed">Speed</option>
-        <option value="Weight">Weight</option>
-        <option value="Height">Height</option>
-        <option value="Lifespan">Lifespan</option>
-        <option value="Length">Length</option>
-      </select>
-      <ul>
-        {animals.animals.map((animal, index) => (
-          <li key={index}>
-            <input type="checkbox" onChange={(e) => handleSelect(e, animal)} />
-            {animal.name}: {animal[selectedCategory]}
-          </li>
-        ))}
-      </ul>
-      <div>
-        Selected Animals:{" "}
-        {selectedAnimals.length > 0
-          ? selectedAnimals.map((a) => a.name).join(", ")
-          : "None"}
-      </div>
+    <div id="quiz">
+      <button
+        onClick={Answer}
+        id={animals[uniqueNumbers[0]].name}
+        disabled={disable}
+      >
+        {animals[uniqueNumbers[0]].name}
+      </button>
+      <br />
+      <br />
+      <button
+        onClick={Answer}
+        id={animals[uniqueNumbers[1]].name}
+        disabled={disable}
+      >
+        {animals[uniqueNumbers[1]].name}
+      </button>
+      <br />
+      <br />
+      <button
+        onClick={Answer}
+        id={animals[uniqueNumbers[2]].name}
+        disabled={disable}
+      >
+        {animals[uniqueNumbers[2]].name}
+      </button>
+      <br />
+      <br />
+      <button
+        onClick={Answer}
+        id={animals[uniqueNumbers[3]].name}
+        disabled={disable}
+      >
+        {animals[uniqueNumbers[3]].name}
+      </button>
+      <br />
+      <br />
+      <button
+        onClick={Answer}
+        id={animals[uniqueNumbers[4]].name}
+        disabled={disable}
+      >
+        {animals[uniqueNumbers[4]].name}
+      </button>
     </div>
   );
 }

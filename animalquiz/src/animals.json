@@ -1,5 +1,4 @@
-{
-    "animals":[
+[
         {
             
             "name": "Cheetah",
@@ -182,4 +181,3 @@
             "Length":"2-3 ft"
         }
     ]
-}
