@@ -1,24 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const animalsRouter = require('./routes/animalsRouter');
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
+const routes = require('./animalsRouter') // includes the routes.js file
+const cors = require('cors') // includes cors module
 
-const app = express();
-const port = process.env.APP_PORT || 8080;
+require('dotenv').config()
 
-app.use(bodyParser.json());
-app.use(cors());
+app.use(cors()) // We're telling express to use CORS
+app.use(express.json()) // we need to tell server to use json as well
+app.use(routes) // tells the server to use the routes in routes.js
 
-mongoose.connect('mongodb://root:root@mongo:27017/animalquiz', { useNewUrlParser: true });
-const connection = mongoose.connection;
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('database connected'))
 
-connection.once('open', () => {
-    console.log("MongoDB database connection established successfully");
+app.listen(process.env.PORT, () => {
+    console.log("The API is running...")
 })
-
-app.use('/animals', animalsRouter);
-
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
