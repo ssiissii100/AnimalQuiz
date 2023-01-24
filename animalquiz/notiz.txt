@@ -1,8 +1,0 @@
-npm install
-docker compose -f "docker-compose.yml" up -d --build 
-//db login
-username: root
-password: root
-
-
-react quiz. select 1 of 5 categories speed, weight, height, lifspan or length. get the data from a mongodb running on docker. play for each categorie 4 rounds where on each round 5 animals get selected. the right answer is the highest value. count points for each right answer.

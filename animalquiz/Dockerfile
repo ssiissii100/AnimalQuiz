@@ -1,16 +1,20 @@
-FROM node:12
+# Use Node.js as the base image
+FROM node:14
 
-# Create app directory
-WORKDIR /usr/src/app
+# Set the working directory in the container
+WORKDIR /usr/src/
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
-# Bundle app source
+# Copy the rest of the application code to the container
 COPY . .
 
-EXPOSE 3000
+# Expose the port the server will run on
+EXPOSE 8080
+
+# Start the server
 CMD [ "npm", "start" ]
