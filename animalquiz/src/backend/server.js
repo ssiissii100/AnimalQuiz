@@ -1,20 +1,22 @@
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const routes = require('./animalsRouter') // includes the routes.js file
-const cors = require('cors') // includes cors module
+const routes = require('./animalsRouter')
+const cors = require('cors')
 
-require('dotenv').config()
+app.use(cors()) 
+app.use(express.json()) 
+app.use(routes) 
 
-app.use(cors()) // We're telling express to use CORS
-app.use(express.json()) // we need to tell server to use json as well
-app.use(routes) // tells the server to use the routes in routes.js
-
+/* Connecting to the database. */
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('database connected'))
 
+/* Listening to the port that is defined in the .env file. */
 app.listen(process.env.PORT, () => {
     console.log("The API is running...")
 })

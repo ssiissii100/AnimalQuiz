@@ -1,23 +1,35 @@
+/* Importing the React library, the useState hook, and the axios library. */
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const Quiz = () => {
+  /* Declaring the state variables. */
   const [category, setCategory] = useState('');
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const categories = ['speed', 'weight', 'height', 'lifespan', 'length'];
 
+  /**
+   * When the user selects a category, the function will get 5 random animals from the category and set
+   * the questions to those animals.
+   * @param e - the event object
+   */
   const handleSelect = (e) => {
     setCategory(e.target.value);
     axios.get(`http://localhost:8080/animals/${e.target.value}`)
-    .then(res => {
+      .then(res => {
         const randomAnimals = res.data.sort(() => Math.random() - 0.5).slice(0, 5);
         setQuestions(randomAnimals);
-    })
-    .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   }
 
+/**
+ * When the user submits an answer, prevent the default action, check if the answer is correct, and if
+ * it is, add one to the score, then move on to the next question.
+ * @param e - the event object
+ */
   const handleSubmit = (e) => {
     e.preventDefault();
     const correctAnswer = questions[currentQuestion][category];
@@ -27,6 +39,7 @@ const Quiz = () => {
     setCurrentQuestion(currentQuestion + 1);
   }
 
+ /* Returning the JSX that will be rendered to the screen. */
   return (
     <div>
       <form>
@@ -54,4 +67,5 @@ const Quiz = () => {
   );
 };
 
+/* Exporting the Quiz component so that it can be imported into another file. */
 export default Quiz;
