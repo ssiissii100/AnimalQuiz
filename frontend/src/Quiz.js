@@ -17,7 +17,7 @@ const Quiz = () => {
    */
   const handleSelect = (e) => {
     setCategory(e.target.value);
-    axios.get(`http://localhost:8082/${e.target.value}`)
+    axios.get(`http://localhost:5000/${e.target.value}`)
       .then(res => {
         const randomAnimals = res.data.sort(() => Math.random() - 0.5).slice(0, 5);
         setQuestions(randomAnimals);

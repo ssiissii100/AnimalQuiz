@@ -15,7 +15,7 @@ function App() {
 
   /* This is a React hook that is used to fetch data from the server. */
   useEffect(() => {
-    axios.get(`http://localhost:8082/${currentCategory}`)
+    axios.get(`http://localhost:5000/${currentCategory}`)
       .then(res => setAnimals(res.data))
       .catch(err => console.log(err));
   }, [currentCategory]);
