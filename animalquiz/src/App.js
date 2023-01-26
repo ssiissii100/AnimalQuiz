@@ -3,6 +3,7 @@ import Start from './Start';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import Finish from './Finish';
 import Test from './Test';
+import './App.css'
 
 function App() {
 

@@ -23,19 +23,17 @@ export default function Start({nameSetter, timeSetter}) {
         }
     }
 
-
     useEffect(() => {
         nameSetter(userName);
         timeSetter(Date.now)
-    }, [nameSetter, userName])
-
-   
+    }, [nameSetter, userName])   
 
     return(
-        <>
+        <div className="startContainer">
+            <h1 className="startHeader">Animal Quiz</h1>
             <button onClick={getStartTime} id="startBtn">Start the Quiz</button>
             <br/>
-            <input onBlur={enableBtn} id="inputName"></input>
-        </>
+            <input onBlur={enableBtn} id="inputName" placeholder="name..."></input>
+        </div>
     )
 }
