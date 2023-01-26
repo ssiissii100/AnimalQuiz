@@ -16,20 +16,10 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ noanimalsfound: 'No Animals found' }));
 });
 
-// @route GET api/animals/:id
-// @description Get single animal by id
-// @access Public
-router.get('/:id', (req, res) => {
-  Animal.findById(req.params.id)
-    .then(animal => res.json(animal))
-    .catch(err => res.status(404).json({ noanimalfound: 'No Animal found' }));
-});
-
-
 router.get('/speed', (req, res) => {
-  Animal.find({}, 'speed', (err, animals) => {
-    if (err) return res.status(500).send(err);
-    return res.status(200).send(animals);
+  Animal.find({}, (err, animals) => {
+    if (err) return res.json({ success: false, error: err });
+    res.json({ success: true, data: animals });
   });
 });
 

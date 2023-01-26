@@ -1,5 +1,5 @@
 /* Importing the React library, the useState hook, the axios library, and the Quiz component. */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Quiz from './Quiz';
 
