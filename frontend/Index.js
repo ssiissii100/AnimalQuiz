@@ -45,7 +45,7 @@ function App() {
 
  /* Returning the JSX that will be rendered to the page. */
   return (
-    <div className="App">
+    <div>
       <h1>Animal Quiz</h1>
       <h2>Category: {currentCategory}</h2>
       <Quiz

@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 
 /* Creating a schema for the animal model. */
-const animalSchema = new mongoose.Schema({
+const AnimalSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -33,4 +33,4 @@ const animalSchema = new mongoose.Schema({
 
 
 /* Exporting the model to be used in other files. */
-module.exports = mongoose.model('Animal', animalSchema);
+module.exports = mongoose.model('animal', AnimalSchema);
