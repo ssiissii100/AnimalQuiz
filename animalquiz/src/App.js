@@ -1,47 +1,38 @@
-import React, { useState } from 'react';
-import animals from './animals.json';
+import React, { useCallback, useState } from 'react';
+import Start from './Start';
+import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import Finish from './Finish';
+import Test from './Test';
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState("Speed");
-  const [selectedAnimals, setSelectedAnimals] = useState([]);
 
-  const handleSelect = (e, animal) => {
-    if (e.target.checked) {
-      setSelectedAnimals([...selectedAnimals, animal]);
-    } else {
-      setSelectedAnimals(selectedAnimals.filter(a => a !== animal));
-    }
-  };
+  const [name, setName] = useState("0");
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(0);
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  }
+
+  let time = endTime-startTime
+
+  const wrapperSetName = useCallback(val => {
+    setName(val);
+  }, [setName]);
+
+  const wrapperSetStartTime = useCallback(val => {
+    setStartTime(val);
+  }, [setStartTime]);
+
+  const wrapperSetEndTime = useCallback(val => {
+    setEndTime(val);
+  }, [setEndTime]);
 
   return (
-    <div>
-      <h1>Animals by</h1>
-      <select onChange={handleCategoryChange} value={selectedCategory}>
-        <option value="Speed">Speed</option>
-        <option value="Weight">Weight</option>
-        <option value="Height">Height</option>
-        <option value="Lifespan">Lifespan</option>
-        <option value="Length">Length</option>
-      </select>
-      <ul>
-        {animals.animals.map((animal, index) => (
-          <li key={index}>
-            <input
-              type="checkbox"
-              onChange={e => handleSelect(e, animal)}
-            />
-            {animal.name}: {animal[selectedCategory]}
-          </li>
-        ))}
-      </ul>
-      <div>
-        Selected Animals: {selectedAnimals.length > 0 ? selectedAnimals.map(a => a.name).join(", ") : "None"}
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Start nameSetter={wrapperSetName} timeSetter={wrapperSetStartTime} />}/>
+        <Route path='/test' element={<Test startTime={startTime}/>} />
+        <Route path='/finish' element={<Finish timeSetter={wrapperSetEndTime} time={time} name={name}/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
