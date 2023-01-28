@@ -89,5 +89,37 @@ animalRoutes.route("/lifespan").get(function (req, res) {
       res.json(result);
     });
 });
- 
-module.exports = animalRoutes;
+
+animalRoutes.route("/users").post(function (req, res) {
+  let db_connect = dbo.getDb("animalquiz");
+  db_connect.collection("users").insertOne(req.body, (err, result) => {
+    if (err) throw err;
+    res.json({ message: "user added successfully" });
+  });
+});
+
+animalRoutes.route("/update/:id").post(function (req, res) {
+  let db_connect = dbo.getDb("userquiz");
+  let userId = req.params.id;
+  let updatedUser = req.body;
+  db_connect
+    .collection("users")
+    .updateOne({ _id: ObjectId(userId) }, { $set: updatedUser }, function (err, result) {
+      if (err) throw err;
+      res.json({ message: "User updated successfully!" });
+    });
+});
+animalRoutes.route("/update/:id").post(function (req, res) {
+  let db_connect = dbo.getDb("userquiz");
+  let userId = req.params.id;
+  let updatedUser = req.body;
+  db_connect
+    .collection("users")
+    .updateOne({ _id: ObjectId(userId) }, { $set: updatedUser }, function (err, result) {
+      if (err) throw err;
+      res.json({ message: "User updated successfully!" });
+    });
+});
+
+
+le.exports = animalRoutes;

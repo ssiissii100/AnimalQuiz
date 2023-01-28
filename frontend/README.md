@@ -1,10 +1,9 @@
-in frontend folder
-
-Install all modules:
 
 npm install
 
-Start the server for the backend:
 
 npm start
 
+
+Port:3000
+http://localhost:3000
