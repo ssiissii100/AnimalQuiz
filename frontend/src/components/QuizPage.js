@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
+const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
   const [selectedAnimals, setSelectedAnimals] = React.useState(null);
   const [AnimalsList, setAnimalsList] = useState(null);
   const [round, setRound] = useState(1);
-  const [points, setPoints] = useState(0);
   const [weiter, setWeiter] = useState(false);
   const [Answered, setAnswered] = useState(false);
   const [Richtig, setRichtig] = useState("");
@@ -43,9 +42,6 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
   };
 
   const handleSubmit = () => {
-    console.log(AnimalsList);
-    console.log(AnimalsList);
-    console.log(selectedCategory);
     setDisabled(true);
 
     let highestLength = 0;
@@ -56,7 +52,6 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
         animalName = item.name;
       }
     });
-    console.log(highestLength, animalName);
 
     if (selectedAnimals === animalName) {
       setPoints(points + 1);

@@ -10,6 +10,7 @@ const Quiz = () => {
   const [category, setCategory] = useState(null);
   const [correctAnimals, setCorrectAnimals] = useState(null);
   const [selectedAnimals, setSelectedAnimals] = useState(null);
+  const [points, setPoints] = useState(0);
 
   const handleNextRound = () => {
     setCurrentRound(currentRound + 1);
@@ -57,6 +58,8 @@ const Quiz = () => {
           animals={animals}
           handleAnimalsSelection={handleAnimalsSelection}
           selectedCategory={category}
+          points={points}
+          setPoints={setPoints}
         />
       )}
       {currentRound > 5 && (
