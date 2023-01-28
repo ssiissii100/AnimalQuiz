@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CategorySelection from "./CategorySelection";
 import QuizPage from "./QuizPage";
-import Result from "./Results";
 
 const Quiz = () => {
   const [currentRound, setCurrentRound] = useState(1);
@@ -61,9 +60,6 @@ const Quiz = () => {
           points={points}
           setPoints={setPoints}
         />
-      )}
-      {currentRound > 5 && (
-        <Result userScore={userScore} handleRestart={handleRestart} />
       )}
     </div>
   );
