@@ -97,7 +97,6 @@ animalRoutes.route("/users").post(function (req, res) {
     res.json({ message: "user added successfully" });
   });
 });
-modu
 
 animalRoutes.route("/update/:id").post(function (req, res) {
   let db_connect = dbo.getDb("userquiz");
