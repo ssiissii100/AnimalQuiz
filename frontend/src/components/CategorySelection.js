@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-const CategorySelection = ({ onCategorySelected }) => {
+const CategorySelection = ({ handleCategorySelection }) => {
   const handleChange = (event) => {
-    onCategorySelected(event.target.value);
+    handleCategorySelection(event.target.value);
   };
 
   return (
