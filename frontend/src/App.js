@@ -1,12 +1,10 @@
-import Quiz from './components/Quiz';
-import './App.css';
+import UserForm from './components/UserForm';
 
 function App() {
   return (
     <div>
-      <Quiz />
+      <UserForm />
     </div>
-
   );
 }
 
