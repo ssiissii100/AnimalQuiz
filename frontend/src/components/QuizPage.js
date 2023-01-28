@@ -61,11 +61,11 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
     if (selectedAnimals === animalName) {
       setPoints(points + 1);
       setWeiter(true);
-      setRichtig("Richtig");
+      setRichtig("Richtig!");
       setAnswered(false);
     } else {
       setWeiter(true);
-      setRichtig("Falsch");
+      setRichtig("Falsch!");
       setAnswered(false);
     }
   };
@@ -76,11 +76,19 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
 
   return (
     <div>
-      <h2>Round {round}/5</h2>
-      <p>Select the animal with the highest {selectedCategory}</p>
-      {AnimalsList === null ? <button onClick={start}>start</button> : " "}
+      <h2 id="quizRound">Round {round}/5</h2>
+      <h3 id="explanationTitle">
+        Select the animal with the highest {selectedCategory}
+      </h3>
+      {AnimalsList === null ? (
+        <button onClick={start} id="startButton">
+          start
+        </button>
+      ) : (
+        " "
+      )}
       {AnimalsList?.map((animal, index) => (
-        <div key={index}>
+        <div key={index} id="radioButtons">
           <input
             className="Animals"
             type="radio"
@@ -92,10 +100,26 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
           <label>{animal.name}</label>
         </div>
       ))}
-      <p>{Richtig}</p>
 
+      {Richtig == "Richtig!" ? (
+        <p id="correct" className="richtig">
+          {Richtig}
+        </p>
+      ) : Richtig === "Falsch!" ? (
+        <p id="false" className="richtig">
+          {Richtig}
+        </p>
+      ) : (
+        <p> &nbsp;</p>
+      )}
       {Answered ? <button onClick={handleSubmit}>Submit</button> : " "}
-      {weiter ? <button onClick={getAnimals}>Weiter</button> : " "}
+      {weiter ? (
+        <button onClick={getAnimals} id="WeiterButton">
+          Weiter
+        </button>
+      ) : (
+        " "
+      )}
     </div>
   );
 };

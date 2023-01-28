@@ -7,9 +7,11 @@ const CategorySelection = ({ handleCategorySelection }) => {
 
   return (
     <div>
-      <label>
+      <h1 id="selectionTitle">ZOO QUIZ</h1>
+      <label id="labelSelection">
         Select a category:
-        <select onChange={handleChange}>
+        <select onChange={handleChange} className="category-select">
+          <option defaultChecked></option>
           <option value="weight">Weight</option>
           <option value="length">Length</option>
           <option value="speed">Speed</option>

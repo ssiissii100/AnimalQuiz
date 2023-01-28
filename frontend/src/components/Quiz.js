@@ -48,7 +48,7 @@ const Quiz = () => {
   };
 
   return (
-    <div>
+    <div id="centering">
       {!category && (
         <CategorySelection handleCategorySelection={handleCategorySelection} />
       )}
