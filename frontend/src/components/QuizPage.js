@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
   const [selectedAnimals, setSelectedAnimals] = React.useState(null);
@@ -8,6 +9,7 @@ const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
   const [Answered, setAnswered] = useState(false);
   const [Richtig, setRichtig] = useState("");
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
 
   const handleAnswerSelected = (e) => {
     setSelectedAnimals(e.target.value);
@@ -66,7 +68,7 @@ const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
   };
 
   if (round > 5) {
-    alert("Finished")();
+    navigate("/test");
   }
 
   return (

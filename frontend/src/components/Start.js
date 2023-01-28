@@ -18,7 +18,7 @@ export default function Start({ nameSetter, timeSetter }) {
 
   function getStartTime() {
     if (userName !== "") {
-      navigate("/test");
+      navigate("/quiz");
       //useNavigate() zu Auswahl
     }
   }

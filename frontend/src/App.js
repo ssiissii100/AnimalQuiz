@@ -7,9 +7,10 @@ import "./App.css";
 import Quiz from "./components/Quiz";
 
 function App() {
-  const [name, setName] = useState("0");
+  const [name, setName] = useState("");
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
+  const [points, setPoints] = useState(0);
 
   let time = endTime - startTime;
 
@@ -47,11 +48,19 @@ function App() {
           }
         />
         <Route path="/test" element={<Test startTime={startTime} />} />
-        <Route path="/quiz" element={<Quiz />} />
+        <Route
+          path="/quiz"
+          element={<Quiz points={points} setPoints={setPoints} />}
+        />
         <Route
           path="/finish"
           element={
-            <Finish timeSetter={wrapperSetEndTime} time={time} name={name} />
+            <Finish
+              timeSetter={wrapperSetEndTime}
+              time={time}
+              name={name}
+              points={points}
+            />
           }
         />
       </Routes>

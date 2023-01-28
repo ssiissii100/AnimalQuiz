@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import CategorySelection from "./CategorySelection";
 import QuizPage from "./QuizPage";
 
-const Quiz = () => {
+const Quiz = ({ points, setPoints }) => {
   const [currentRound, setCurrentRound] = useState(1);
   const [userScore, setUserScore] = useState(0);
   const [animals, setAnimals] = useState(null);
   const [category, setCategory] = useState(null);
   const [correctAnimals, setCorrectAnimals] = useState(null);
   const [selectedAnimals, setSelectedAnimals] = useState(null);
-  const [points, setPoints] = useState(0);
 
   const handleNextRound = () => {
     setCurrentRound(currentRound + 1);
