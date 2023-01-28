@@ -32,6 +32,11 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
     setRichtig("");
     setRound(round + 1);
     setDisabled(false);
+    document.getElementsByClassName("Animals")[0].checked = false;
+    document.getElementsByClassName("Animals")[1].checked = false;
+    document.getElementsByClassName("Animals")[2].checked = false;
+    document.getElementsByClassName("Animals")[3].checked = false;
+    document.getElementsByClassName("Animals")[4].checked = false;
   };
   const start = () => {
     setAnimalsList(pickRandom(animals));
@@ -66,10 +71,7 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
   };
 
   if (round > 5) {
-    console
-      .log
-      //go to Auswertung
-      ();
+    alert("Finished")();
   }
 
   return (
@@ -80,6 +82,7 @@ const QuizPage = ({ animals, selectedCategory, onCorrectAnswer }) => {
       {AnimalsList?.map((animal, index) => (
         <div key={index}>
           <input
+            className="Animals"
             type="radio"
             value={animal.name}
             name="animals"
