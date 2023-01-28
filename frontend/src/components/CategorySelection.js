@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 
-const CategorySelection = ({ onCategorySelected }) => {
+const CategorySelection = ({ handleCategorySelection }) => {
   const handleChange = (event) => {
-    onCategorySelected(event.target.value);
+    handleCategorySelection(event.target.value);
   };
 
   return (
     <div>
-      <label>
+      <h1 id="selectionTitle">ZOO QUIZ</h1>
+      <label id="labelSelection">
         Select a category:
-        <select onChange={handleChange}>
+        <select onChange={handleChange} className="category-select">
+          <option defaultChecked></option>
           <option value="weight">Weight</option>
           <option value="length">Length</option>
           <option value="speed">Speed</option>
