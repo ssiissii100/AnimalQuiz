@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function Finish({ timeSetter, time, name, points }) {
-  //TODO
-  //get points -> for points in fetch
-
-  // let points = 0
 
   const [users, setUsers] = useState(null);
   const [sortedUsers, setSortedUsers] = useState(null);

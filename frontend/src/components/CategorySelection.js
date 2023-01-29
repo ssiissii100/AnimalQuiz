@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * It's a function that takes a function as an argument and returns a div with a label and a select
+ * element.
+ * @returns The user's selection of a category.
+ */
 const CategorySelection = ({ handleCategorySelection }) => {
   const handleChange = (event) => {
     handleCategorySelection(event.target.value);

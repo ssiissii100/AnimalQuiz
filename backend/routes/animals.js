@@ -1,8 +1,11 @@
+/* This is importing the express module, creating a router, importing the database connection, and
+importing the dotenv module. */
 const express = require("express");
 const animalRoutes = express.Router();
 const dbo = require("../config/db");
 require('dotenv').config();
 
+/* Getting the data from the database. */
 animalRoutes.route("/speed").get(function (req, res) {
   let db_connect = dbo.getDb("animalquiz");
   db_connect
@@ -101,6 +104,7 @@ animalRoutes.route("/user").get(function (req, res) {
     });
 });
 
+/* Adding the data from the database. */
 animalRoutes.route("/users").post(function (req, res) {
   let db_connect = dbo.getDb("animalquiz");
   db_connect.collection("users").insertOne(req.body, (err, result) => {
@@ -120,9 +124,6 @@ animalRoutes.route("/update/:id").post(function (req, res) {
       res.json({ message: "User updated successfully!" });
     });
 });
-
-
-
 
 
 module.exports = animalRoutes;

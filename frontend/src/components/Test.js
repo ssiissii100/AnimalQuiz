@@ -5,13 +5,15 @@ export default function Test() {
 
     const navigate = useNavigate();
 
+/**
+ * It navigates to the finish page.
+ */
     function navigateFinish() {
         navigate('/finish')
     }
 
     return(
         <>
-            Hello Test
             <br/>
             <button onClick={navigateFinish}>go to finish</button>
         </>

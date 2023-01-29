@@ -6,6 +6,9 @@ export default function Start({ nameSetter, timeSetter }) {
 
   const [userName, setUserName] = useState("");
 
+/**
+ * The function enables the start button if the input field is not empty.
+ */
   function enableBtn() {
     let inputName = document.getElementById("inputName").value;
     if (inputName !== "") {
@@ -23,6 +26,7 @@ export default function Start({ nameSetter, timeSetter }) {
     }
   }
 
+/* Setting the name and the time. */
   useEffect(() => {
     nameSetter(userName);
     timeSetter(Date.now);

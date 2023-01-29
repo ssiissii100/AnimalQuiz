@@ -11,10 +11,36 @@ const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
 
+  /**
+   * When the user clicks on an answer, the value of the answer is stored in the state variable
+   * 'selectedAnimals' and the state variable 'answered' is set to true.
+   * @param e - the event object
+   */
   const handleAnswerSelected = (e) => {
     setSelectedAnimals(e.target.value);
     setAnswered(true);
   };
+/**
+ * It takes an array, makes a copy of it, then picks 5 random elements from the copy, and returns them
+ * in a new array.
+ * 
+ * The reason we make a copy of the array is so that we can remove elements from it. If we didn't do
+ * this, we'd end up with the same element being picked multiple times.
+ * 
+ * The reason we remove elements from the array is so that we don't pick the same element twice.
+ * 
+ * The reason we use a for loop is so that we can pick 5 elements.
+ * 
+ * The reason we use Math.random() is so that we can pick a random element.
+ * 
+ * The reason we use Math.floor() is so that we can get a whole number.
+ * 
+ * The reason we use splice() is so that we can remove an element from the array.
+ * 
+ * The reason we use push() is so that
+ * @param arr - the array you want to pick from
+ * @returns An array of 5 random elements from the original array.
+ */
 
   const pickRandom = (arr) => {
     let randomArr = [...arr];
@@ -27,6 +53,20 @@ const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
     return result;
   };
 
+  /**
+   * Const getAnimals = () => {
+   *     setAnimalsList(pickRandom(animals));
+   *     setWeiter(false);
+   *     setRichtig("");
+   *     setRound(round + 1);
+   *     setDisabled(false);
+   *     document.getElementsByClassName("Animals")[0].checked = false;
+   *     document.getElementsByClassName("Animals")[1].checked = false;
+   *     document.getElementsByClassName("Animals")[2].checked = false;
+   *     document.getElementsByClassName("Animals")[3].checked = false;
+   *     document.getElementsByClassName("Animals")[4].checked = false;
+   *   };
+   */
   const getAnimals = () => {
     setAnimalsList(pickRandom(animals));
     setWeiter(false);
@@ -43,6 +83,10 @@ const QuizPage = ({ animals, selectedCategory, points, setPoints }) => {
     setAnimalsList(pickRandom(animals));
   };
 
+  /**
+   * The function compares the user's answer to the correct answer and then sets the state of the app
+   * accordingly.
+   */
   const handleSubmit = () => {
     setDisabled(true);
 

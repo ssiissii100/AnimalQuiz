@@ -14,6 +14,7 @@ function App() {
 
   let time = endTime - startTime;
 
+  /* A wrapper function that is used to set the name state. */
   const wrapperSetName = useCallback(
     (val) => {
       setName(val);
@@ -21,6 +22,7 @@ function App() {
     [setName]
   );
 
+  /* A wrapper function that is used to set the startTime state. */
   const wrapperSetStartTime = useCallback(
     (val) => {
       setStartTime(val);
@@ -28,6 +30,7 @@ function App() {
     [setStartTime]
   );
 
+  /* A wrapper function that is used to set the endTime state. */
   const wrapperSetEndTime = useCallback(
     (val) => {
       setEndTime(val);
